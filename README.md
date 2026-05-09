@@ -62,6 +62,14 @@ List the 20 most recently committed local branches, sorted by last commit date.
 hf my
 ```
 
+### `hf st`
+
+Run `git status`.
+
+```bash
+hf st
+```
+
 ## Confirmation
 
 Before running anything that touches the repo, `hf` prints the exact git commands it is about to execute and asks `Ok? (y/n) [y]:`. Hit Enter to confirm or type `n` to abort. `hf my` is read-only and skips the prompt.
@@ -79,6 +87,7 @@ src/run.js             print commands → confirm → exec
 src/commands/get.js
 src/commands/save.js
 src/commands/my.js
+src/commands/st.js
 Ruby/                  the original Ruby implementation, kept for reference
 ```
 

@@ -3,6 +3,7 @@ import { Command } from 'commander'
 import { run as runGet } from '../src/commands/get.js'
 import { run as runSave } from '../src/commands/save.js'
 import { run as runMy } from '../src/commands/my.js'
+import { run as runSt } from '../src/commands/st.js'
 
 const program = new Command()
 
@@ -14,7 +15,6 @@ program
 program
   .command('get')
   .description('Pull current branch from origin')
-  .option('-y, --yes', 'skip confirmation prompt')
   .action(runGet)
 
 program
@@ -27,6 +27,11 @@ program
   .command('my')
   .description('List 20 most recently committed local branches')
   .action(runMy)
+
+program
+  .command('st')
+  .description('Show git status')
+  .action(runSt)
 
 const argv = process.argv.map(a => (a === '--y' ? '--yes' : a))
 await program.parseAsync(argv)
