@@ -1,0 +1,32 @@
+#!/usr/bin/env node
+import { Command } from 'commander'
+import { run as runGet } from '../src/commands/get.js'
+import { run as runSave } from '../src/commands/save.js'
+import { run as runMy } from '../src/commands/my.js'
+
+const program = new Command()
+
+program
+  .name('hf')
+  .description('Tiny git workflow helper: get, save, my')
+  .version('3.0.0')
+
+program
+  .command('get')
+  .description('Pull current branch from origin')
+  .option('-y, --yes', 'skip confirmation prompt')
+  .action(runGet)
+
+program
+  .command('save <message>')
+  .description('Stage all changes, commit, pull, push the current branch')
+  .option('-y, --yes', 'skip confirmation prompt')
+  .action(runSave)
+
+program
+  .command('my')
+  .description('List 20 most recently committed local branches')
+  .action(runMy)
+
+const argv = process.argv.map(a => (a === '--y' ? '--yes' : a))
+await program.parseAsync(argv)

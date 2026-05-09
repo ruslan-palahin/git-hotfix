@@ -1,0 +1,17 @@
+{
+  "name": "git-hotfix",
+  "version": "3.0.0",
+  "description": "Tiny git workflow helper: get, save, my",
+  "type": "module",
+  "bin": {
+    "hf": "./bin/hf"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^12.1.0"
+  },
+  "license": "MIT"
+}
