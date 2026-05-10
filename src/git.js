@@ -12,8 +12,9 @@ export function currentBranch() {
 
 export function taskName() {
   const branch = currentBranch()
+  if (!branch) return null
   const m = branch.match(/\/([^/]+)$/)
-  return m ? m[1] : null
+  return m ? m[1] : branch
 }
 
 export function hasChanges() {
