@@ -4,6 +4,7 @@ import { run as runGet } from '../src/commands/get.js'
 import { run as runSave } from '../src/commands/save.js'
 import { run as runMy } from '../src/commands/my.js'
 import { run as runSt } from '../src/commands/st.js'
+import { run as runReset } from '../src/commands/reset.js'
 
 const program = new Command()
 
@@ -32,6 +33,12 @@ program
   .command('st')
   .description('Show git status')
   .action(runSt)
+
+program
+  .command('reset')
+  .description('Discard all local changes (git add -A && git reset --hard)')
+  .option('-y, --yes', 'skip confirmation prompt')
+  .action(runReset)
 
 const argv = process.argv.map(a => (a === '--y' ? '--yes' : a))
 await program.parseAsync(argv)
